@@ -1,7 +1,7 @@
 # Lottery Project (unit tests and scripts)
 
 .env 
-MNEMONIC="" 
+PRIVATE_KEY="YOUR KEY" 
 
 Installation
 ```shell
