@@ -3,7 +3,7 @@
 This project demostrates the use of unit tests and scripts to interact with Ballot contract (voting contract from Eth official documentation). Hardhat and Ethers are used to deploy the contract, stablish connection, and execute its methods.
 
 .env 
-MNEMONIC="matter dress crop hobby icon ritual pear pistol birth summer logic quote" 
+MNEMONIC="" 
 
 Installation
 ```shell
