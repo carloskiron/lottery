@@ -3,13 +3,13 @@
 This project demostrates the use of unit tests and scripts to interact with Ballot contract (voting contract from Eth official documentation). Hardhat and Ethers are used to deploy the contract, stablish connection, and execute its methods.
 
 .env 
-MNEMONIC="matter dress crop hobby icon ritual pear pistol birth summer logic quote" 
+MNEMONIC="" 
 
 Installation
 ```shell
 yarn install
 ```
-Compile Ballot.sol
+Compile
 ```shell
 yarn hardhat compile
 ```
@@ -20,12 +20,4 @@ yarn hardhat test
 Deploy contract on Testnet
 ```shell
 yarn hardhat run ./scripts/deploy.ts   
-```
-Give right to vote
-```shell
-yarn hardhat run ./scripts/giveRightToVote.ts   
-```
-Vote a proposal
-```shell
-yarn hardhat run ./scripts/vote.ts   
 ```
