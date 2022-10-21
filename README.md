@@ -1,6 +1,4 @@
-# Ballot.sol Project (unit tests and scripts)
-
-This project demostrates the use of unit tests and scripts to interact with Ballot contract (voting contract from Eth official documentation). Hardhat and Ethers are used to deploy the contract, stablish connection, and execute its methods.
+# Lottery Project (unit tests and scripts)
 
 .env 
 MNEMONIC="" 
