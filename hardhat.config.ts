@@ -8,6 +8,11 @@ dotenv.config();
 const config: HardhatUserConfig = {
   paths: { tests: "test" },
   solidity: "0.8.17",
+  networks: {
+    hardhat: {
+      hardfork: "merge"
+    }
+  },
 };
 
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {

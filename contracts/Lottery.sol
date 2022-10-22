@@ -5,6 +5,7 @@ import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import {LotteryToken} from "./LotteryToken.sol";
 
 contract Lottery is Ownable {
+    //State Machine
     /// @notice Address of the token used as payment for the bets
     LotteryToken public paymentToken;
     /// @notice Amount of tokens given per ETH paid
@@ -68,8 +69,7 @@ contract Lottery is Ownable {
 
     function purchaseTokens(uint256 amount) public payable {
         require(betsOpen, "Bets are not open");
-        //require(msg.value == amount * betPrice, "Incorrect amount of ETH sent");
-        paymentToken.mint(msg.sender, amount);
+        paymentToken.mint(msg.sender, amount * purchaseRatio);
     }
 
     /// @notice Charge the bet price and create a new bet slot with the sender address
@@ -108,16 +108,7 @@ contract Lottery is Ownable {
     }
 
     function getRandomNumber() public view returns (uint256) {
-        return
-            uint256(
-                keccak256(
-                    abi.encodePacked(
-                        block.difficulty,
-                        block.timestamp,
-                        paymentToken.totalSupply()
-                    )
-                )
-            );
+        return block.difficulty;
     }
 
     // @notice Withdraw `amount` from that accounts prize pool

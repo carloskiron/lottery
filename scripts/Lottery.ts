@@ -24,8 +24,8 @@ async function main() {
 async function initContracts() {
   const contractFactory = await ethers.getContractFactory("Lottery");
   contract = await contractFactory.deploy(
-    "LotteryToken",
-    "LT0",
+    "G2LotteryToken",
+    "G2T",
     TOKEN_RATIO,
     ethers.utils.parseEther(BET_PRICE.toFixed(18)),
     ethers.utils.parseEther(BET_FEE.toFixed(18))
