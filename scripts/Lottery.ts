@@ -2,14 +2,11 @@ import { ethers } from "hardhat";
 import * as readline from "readline";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { Lottery, LotteryToken } from "../typechain-types";
+import * as config from "../config";
 
 let contract: Lottery;
 let token: LotteryToken;
 let accounts: SignerWithAddress[];
-
-const BET_PRICE = 1;
-const BET_FEE = 0.2;
-const TOKEN_RATIO = 1;
 
 async function main() {
   await initContracts();
@@ -26,9 +23,9 @@ async function initContracts() {
   contract = await contractFactory.deploy(
     "G2LotteryToken",
     "G2T",
-    TOKEN_RATIO,
-    ethers.utils.parseEther(BET_PRICE.toFixed(18)),
-    ethers.utils.parseEther(BET_FEE.toFixed(18))
+    config.TOKEN_RATIO,
+    ethers.utils.parseEther(config.BET_PRICE.toFixed(18)),
+    ethers.utils.parseEther(config.BET_FEE.toFixed(18))
   );
   await contract.deployed();
   const tokenAddress = await contract.paymentToken();
@@ -202,9 +199,9 @@ async function displayBalance(index: string) {
 }
 
 async function buyTokens(index: string, amount: string) {
-  const tx = await contract.connect(accounts[Number(index)]).purchaseTokens({
-    value: ethers.utils.parseEther(amount),
-  });
+  const tx = await contract
+    .connect(accounts[Number(index)])
+    .purchaseTokens(ethers.utils.parseEther(amount));
   const receipt = await tx.wait();
   console.log(`Tokens bought (${receipt.transactionHash})\n`);
 }
